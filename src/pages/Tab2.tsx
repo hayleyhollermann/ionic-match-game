@@ -6,7 +6,14 @@ import { shuffle } from 'ionicons/icons';
 
 const Tab2: React.FC = () => {
 
-  const images = [
+  // window.addEventListener('click', onclick);
+
+  let clickedCards = {
+    clicked1: {},
+    clicked2: {}
+  }
+
+  const cards = [
     { id: 1, image: 'https://images.unsplash.com/photo-1580650165001-550c2dcf0fff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2220&q=80' },
     { id: 2, image: 'https://images.unsplash.com/photo-1580650165001-550c2dcf0fff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2220&q=80' },
     { id: 3, image: 'https://images.unsplash.com/photo-1517423568366-8b83523034fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80' },
@@ -18,19 +25,20 @@ const Tab2: React.FC = () => {
   ];
 
   const shuffle = () => {
-    let ctr = images.length, temp, index;
-    // While there are elements in the array
+    let ctr = cards.length, temp, index;
     while (ctr > 0) {
-      // Pick a random index
       index = Math.floor(Math.random() * ctr);
-      // Decrease ctr by 1
       ctr--;
-      // And swap the last element with it
-      temp = images[ctr];
-      images[ctr] = images[index];
-      images[index] = temp;
+      temp = cards[ctr];
+      cards[ctr] = cards[index];
+      cards[index] = temp;
     }
-    return images;
+    return cards;
+  }
+
+  const flipCard = () => {
+    console.log('clicking on card');
+    
   }
 
   return (
@@ -47,8 +55,14 @@ const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className="match">
-          {shuffle().map((number) => 
-            <div key={number.id}><img src={number.image} /></div>
+          {shuffle().map((card) => 
+            <div key={card.id} onClick={flipCard}>
+              {/* {clickedCards.clicked1 === card || clickedCards.clicked2 === card ?  */}
+                <div className="card"><img src={card.image} /></div>
+                {/* :
+                <div className="card back"></div>
+              } */}
+            </div>
           )}
         </div>
       </IonContent>

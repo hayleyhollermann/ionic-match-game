@@ -1,3 +1,13 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.card {
+  width: 20%;
+  height: auto;
+  margin: 1%;
+}
+
+.back {
+  background-color: aqua;
+}
