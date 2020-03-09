@@ -1,0 +1,7 @@
+{
+  "name": "ionic-match-game",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
