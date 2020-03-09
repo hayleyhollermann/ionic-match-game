@@ -36,8 +36,8 @@ const Tab2: React.FC = () => {
     return cards;
   }
 
-  const flipCard = () => {
-    console.log('clicking on card');
+  const flipCard = (card: { id: number; image: string; }) => {
+    console.log('clicking on card', card.id);
     
   }
 
@@ -56,7 +56,7 @@ const Tab2: React.FC = () => {
         </IonHeader>
         <div className="match">
           {shuffle().map((card) => 
-            <div key={card.id} onClick={flipCard}>
+            <div key={card.id} onClick={() => flipCard(card)}>
               {/* {clickedCards.clicked1 === card || clickedCards.clicked2 === card ?  */}
                 <div className="card"><img src={card.image} /></div>
                 {/* :
